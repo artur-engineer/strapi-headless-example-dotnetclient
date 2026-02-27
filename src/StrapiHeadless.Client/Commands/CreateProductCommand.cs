@@ -22,11 +22,6 @@ public class CreateProductCommand
         public string? Brand { get; set; }
 
         [JsonProperty("category")]
-        public CategoryData Category { get; set; }
-
-        public class CategoryData
-        {
-            public int Id { get; set; }
-        }
+        public string Category { get; set; }
     } 
 }

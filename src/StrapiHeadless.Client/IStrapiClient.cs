@@ -9,7 +9,10 @@ public interface IStrapiClient
     [Header("Authorization")] public string Authorization { get; set; }
     
     [Get("/products")]
-    Task<IList<ProductEntity>> GetProducts();
+    Task<StrapiDocument<IList<ProductEntity>>> GetProducts();
+    
+    [Get("/products/{documentId}")]
+    Task<StrapiDocument<ProductEntity>> FindProduct([Path] string documentId);
     
     [Post("/products")]
     Task<StrapiDocument> CreateProduct([Body] CreateProductCommand request);
@@ -18,5 +21,5 @@ public interface IStrapiClient
     Task<StrapiDocument> CreateCategory([Body] CreateCategoryCommand request);
     
     [Get("/categories")]
-    Task<IList<CategoryEntity>> GetCategories();
+    Task<StrapiDocument<IList<CategoryEntity>>> GetCategories();
 }
